@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment Check</title>
+</head>
+<body>
+    <input type="text" id="exp_name">
+	<input type="text" id="server_id">
+	<button id="submit">done</button>
+
+	<div id="exp_checked"></div>
+
+	<script src="./mmh3.js"></script>
+
+    <script>
+document.getElementById('submit').addEventListener('click', function () {
+	var exp_name = document.getElementById('exp_name').value;
+	var server_id = document.getElementById('server_id').value;
+	var result =  document.getElementById('exp_checked');
+
+	if (!exp_name) {
+		result.innerHTML = 'pls input exp_name';
+	} else if (!server_id) {
+		result.innerHTML = 'pls input server_id';
+	} else {
+		result.innerHTML = 'debug : ' + mmh3(exp_name + ':' + server_id) % 10e3;
+	}
+});
+    </script>
+</body>
+</html>
